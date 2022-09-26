@@ -1,3 +1,13 @@
-# Mysql
+# Mysql container aliases ...
 alias mysql="docker exec -it local-stack-mysql-1 mysql"
 alias mysqlroot="docker exec -it local-stack-mysql-1 mysql -uroot -psecret"
+
+# Docker-compose aliases ...
+alias local-cd="cd \$LOCAL_STACK_DIR"
+alias local-up="docker-compose -f \$LOCAL_STACK_DIR/docker-compose.yml up -d"
+alias local-stop="docker-compose -f \$LOCAL_STACK_DIR/docker-compose.yml stop"
+alias local-links="\$LOCAL_STACK_DIR/links"
+
+# Web apps
+alias local-pma="python3 -m webbrowser http://127.0.0.1:35021"
+alias local-mail="python3 -m webbrowser http://127.0.0.1:35022"

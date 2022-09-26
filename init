@@ -9,6 +9,13 @@ cat >> ~/.zshrc <<- EOM
 source "$DIR/.aliases"
 EOM
 
+echo "Add local-stack base path to the ~/.zshrc file."
+cat >> ~/.zshrc <<- EOM
+
+# Local-stack base directory
+export LOCAL_STACK_DIR="$DIR"
+EOM
+
 echo "Creating the docker global network"
 docker network create local-stack
 
