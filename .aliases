@@ -1,2 +1,3 @@
 # Mysql
 alias mysql="docker exec -it local-stack-mysql-1 mysql"
+alias mysqlroot="docker exec -it local-stack-mysql-1 mysql -uroot -psecret"

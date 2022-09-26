@@ -6,7 +6,7 @@ echo "Adding aliases PATH to the ~/.zshrc file."
 cat >> ~/.zshrc <<- EOM
 
 # Add local-stack aliases
-export PATH="\$PATH:$DIR/.aliases"
+source "$DIR/.aliases"
 EOM
 
 echo "Creating the docker global network"
