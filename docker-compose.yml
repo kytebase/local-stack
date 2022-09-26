@@ -17,6 +17,18 @@ services:
     networks:
       - default
 
+  phpmyadmin:
+    image: phpmyadmin
+    environment:
+      PMA_HOST: mysql
+      PMA_USER: root
+      PMA_PASSWORD: secret
+      UPLOAD_LIMIT: 3000000000
+    ports:
+      - 35021:80
+    networks:
+      - default
+
   redis:
     image: redis:alpine
     restart: always
@@ -34,7 +46,7 @@ services:
       - default
     ports:
       - 1025:1025
-      - 8025:8025
+      - 35022:8025
 
 networks:
   default:

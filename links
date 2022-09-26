@@ -8,4 +8,5 @@ echo "Mailhog: local-stack:1025"
 tput setaf 2; 
 echo "Sites:"
 tput setaf 7; 
-echo "Mailhog UI: http://127.0.0.1:34025"
+echo "PHPMyadmin: http://127.0.0.1:35021"
+echo "Mailhog UI: http://127.0.0.1:35022"
