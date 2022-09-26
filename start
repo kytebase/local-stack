@@ -1,0 +1,6 @@
+#!/bin/bash
+
+NETWORK_NAME="local-stack"
+
+docker network create $NETWORK_NAME
+docker-compose up -d
