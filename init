@@ -1,0 +1,16 @@
+#!/bin/bash
+
+DIR=$(pwd)
+
+echo "Adding aliases PATH to the ~/.zshrc file."
+cat >> ~/.zshrc <<- EOM
+
+# Add local-stack aliases
+export PATH="\$PATH:$DIR/.aliases"
+EOM
+
+echo "Creating the docker global network"
+docker network create local-stack
+
+echo "Add hosts to the /etc/hosts file"
+sudo sh -c "echo 127.0.0.1 local-stack mysql redis rabbitmq mailhog minio >> /etc/hosts"

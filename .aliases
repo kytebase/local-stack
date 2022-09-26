@@ -1,0 +1,2 @@
+# Mysql
+alias mysql="docker exec -it local-stack-mysql-1 mysql"

@@ -6,3 +6,4 @@
 
 ```
 sudo sh -c "echo 127.0.0.1 local-stack mysql redis rabbitmq mailhog minio >> /etc/hosts"
+```
