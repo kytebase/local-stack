@@ -20,8 +20,8 @@ services:
   traefik:
     image: traefik:v2.9
     ports:
-      - 80:80
-      - 8080:8080
+      - 35080:80
+      - 35088:8080
     command:
       - "--api.insecure=true"
       - "--providers.docker=true"

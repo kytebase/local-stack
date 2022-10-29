@@ -5,8 +5,9 @@ tput setaf 7;
 echo "Mysql:   local-stack:34025 root secret"
 echo "Redis:   local-stack:6379"
 echo "Mailhog: local-stack:1025"
-tput setaf 2; 
+tput setaf 2;
 echo "Sites:"
 tput setaf 7; 
 echo "PHPMyadmin: http://127.0.0.1:35021"
 echo "Mailhog UI: http://127.0.0.1:35022"
+echo "Treafik:    http://127.0.0.1:35088"
