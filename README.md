@@ -4,7 +4,7 @@ docker, docker-compose сервисүүд нээлттэй ажиллаж бай
 
 ```
 cd ~/
-git clone https://github.com/kytebase/local-stack.git
+git clone https://github.com/myagmarsurensedjav/local-stack.git
 
 cd local-stack
 ./init
