@@ -1,6 +1,5 @@
-# Mysql container aliases ...
-alias mysql="docker exec -it local-stack_mysql_1 mysql"
-alias mysqlroot="docker exec -it local-stack_mysql_1 mysql -uroot -psecret"
+alias mysql="docker exec -it $(docker ps --filter "name=mysql" --format "{{.ID}}") mysql"
+alias mysqlroot="docker exec -it $(docker ps --filter "name=mysql" --format "{{.ID}}") mysql -uroot -psecret"
 
 # Docker-compose aliases ...
 alias local-cd="cd \$LOCAL_STACK_DIR"
