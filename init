@@ -1,23 +1,39 @@
 #!/bin/bash
 
 DIR=$(pwd)
+ZSHRC=~/.zshrc
+ETC_HOSTS=/etc/hosts
 
-echo "Adding aliases PATH to the ~/.zshrc file."
-cat >> ~/.zshrc <<- EOM
+# Check if aliases are already added to ~/.zshrc
+if grep -q "source \"$DIR/.aliases\"" "$ZSHRC"; then
+    echo "Aliases PATH already added to the ~/.zshrc file. Skipping."
+else
+    echo "Adding aliases PATH to the ~/.zshrc file."
+    echo "# Add local-stack aliases" >> "$ZSHRC"
+    echo "source \"$DIR/.aliases\"" >> "$ZSHRC"
+fi
 
-# Add local-stack aliases
-source "$DIR/.aliases"
-EOM
+# Check if LOCAL_STACK_DIR is already added to ~/.zshrc
+if grep -q "export LOCAL_STACK_DIR=\"$DIR\"" "$ZSHRC"; then
+    echo "Local-stack base path already added to the ~/.zshrc file. Skipping."
+else
+    echo "Adding local-stack base path to the ~/.zshrc file."
+    echo "# Local-stack base directory" >> "$ZSHRC"
+    echo "export LOCAL_STACK_DIR=\"$DIR\"" >> "$ZSHRC"
+fi
 
-echo "Add local-stack base path to the ~/.zshrc file."
-cat >> ~/.zshrc <<- EOM
+# Check if local-stack network is already created
+if docker network ls | grep -q "local-stack"; then
+    echo "The docker global network local-stack already exists. Skipping."
+else
+    echo "Creating the docker global network"
+    docker network create local-stack
+fi
 
-# Local-stack base directory
-export LOCAL_STACK_DIR="$DIR"
-EOM
-
-echo "Creating the docker global network"
-docker network create local-stack
-
-echo "Add hosts to the /etc/hosts file"
-sudo sh -c "echo 127.0.0.1 local-stack mysql redis rabbitmq mailhog minio >> /etc/hosts"
+# Check if hosts are already added to /etc/hosts
+if grep -q "127.0.0.1 local-stack mysql redis rabbitmq mailhog minio" "$ETC_HOSTS"; then
+    echo "Hosts already added to the /etc/hosts file. Skipping."
+else
+    echo "Adding hosts to the /etc/hosts file."
+    sudo sh -c "echo 127.0.0.1 local-stack mysql redis rabbitmq mailhog minio >> $ETC_HOSTS"
+fi
